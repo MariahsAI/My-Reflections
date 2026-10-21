@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reflections · Toggle your reality</title>
+<meta name="description" content="Make the song. Flip the moment. Get paid when it spreads. AI turns your real moment into a song or film; friends flip it, remix it and share it, and you get credit and a cut.">
+<meta name="theme-color" content="#0c0912">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Reflections">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reflections">
+<meta property="og:title" content="Reflections · Toggle your reality">
+<meta property="og:description" content="Make the song. Flip the moment. Get paid when it spreads. AI turns your real moment into a song or film; friends flip it, remix it and share it, and you get credit and a cut.">
+<meta property="og:image" content="https://mariahsai.github.io/My-Reflections/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://mariahsai.github.io/My-Reflections/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mariahsai.github.io/My-Reflections/assets/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: one dark column of bands. Hero splits copy | mirror on wide screens and stacks on phones. Black ground, color only in the gradient type, rings and cards. */
+:root{
+  color-scheme:dark;
+  --ink:#0c0912; --ink-2:#15111e; --ink-3:#1f1a2b; --line:#2c2540;
+  --fg:#f3f0fa; --muted:#a39bb5; --dim:#8a82a0;
+  --violet:#a447ff; --mint:#17f0a4; --azure:#3b8cff; --silver:#dcdde4; --rose:#ff3fa4; --amber:#ffb24a;
+  --grad:linear-gradient(160deg,var(--violet) 0%,var(--mint) 55%,var(--azure) 100%);
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --wrap:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--fg);font:16px/1.55 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--mint);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.03em;text-wrap:balance}
+.grad{background:linear-gradient(90deg,var(--violet),var(--mint),var(--azure),var(--violet));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 8s linear infinite}
+@keyframes shimmer{to{background-position:300% 0}}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:54px;padding:0 24px;border-radius:17px;font-weight:600;font-size:16px;text-decoration:none;white-space:nowrap}
+.btn-light{background:var(--fg);color:var(--ink);box-shadow:0 14px 40px -12px rgba(164,71,255,.7)}
+.btn-ghost{background:var(--ink-3);border:1px solid var(--line)}
+.btn small{font:500 11px var(--mono);opacity:.6}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(12,9,18,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--ink-3)}
+.hd{display:flex;align-items:center;gap:22px;height:66px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 21px var(--display);letter-spacing:-.03em}
+.logo img{width:22px;height:auto}
+.hd nav{display:flex;gap:22px;margin-left:auto;font-size:14px;color:var(--muted)}
+.hd nav a{text-decoration:none}
+.hd nav a:hover{color:var(--fg)}
+.hd .btn{height:42px;padding:0 16px;font-size:14px;border-radius:13px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding-block:72px 64px}
+.hero h1{font-size:clamp(40px,4.6vw,66px);line-height:.95;font-weight:800;letter-spacing:-.04em}
+.hero h1 .grad{display:block}
+.hero p.lede{font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:30em;margin:22px 0 28px}
+.ctas{display:flex;gap:10px;flex-wrap:wrap}
+.fine{margin-top:14px;font-size:13px;color:var(--dim)}
+.stage{position:relative;display:grid;place-items:center;min-height:460px}
+.mirror{position:relative;width:min(360px,74vw);aspect-ratio:1;max-width:100%;border-radius:50%;overflow:hidden}
+.mirror .ring{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 200deg,var(--violet),var(--mint),var(--azure),var(--violet));animation:spin 12s linear infinite}
+.mirror video{position:absolute;inset:6%;width:88%;height:88%;border-radius:50%;object-fit:cover;object-position:50% 35%;background:#000}
+.mirror .shine{position:absolute;inset:6%;border-radius:50%;overflow:hidden;pointer-events:none}
+.mirror .shine::before{content:"";position:absolute;inset:-50%;background:linear-gradient(115deg,transparent 42%,rgba(164,71,255,.4) 47%,rgba(23,240,164,.4) 52%,rgba(59,140,255,.35) 56%,transparent 61%);animation:sweep 5s ease-in-out infinite;mix-blend-mode:screen}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes sweep{0%{transform:translateX(-45%)}60%,100%{transform:translateX(45%)}}
+.float{position:absolute;display:flex;align-items:center;gap:10px;padding:10px 14px 10px 10px;border-radius:18px;background:rgba(21,17,30,.9);border:1px solid var(--line);backdrop-filter:blur(12px);font-size:13px;box-shadow:0 18px 40px -16px rgba(0,0,0,.8);animation:bob 6s ease-in-out infinite}
+.float b{display:block;font-size:14px}
+.float small{color:var(--muted);font:500 11px var(--mono)}
+.float .sq{width:38px;height:38px;border-radius:11px;flex:none}
+.f1{top:6%;left:-2%}
+.f2{bottom:8%;right:-4%;animation-delay:-2s}
+.f3{bottom:-2%;left:4%;animation-delay:-4s}
+.eq{display:flex;gap:3px;align-items:center;height:18px}
+.eq i{width:3px;border-radius:2px;background:var(--mint);animation:eq 1s ease-in-out infinite}
+@keyframes eq{0%,100%{height:5px}50%{height:18px}}
+@keyframes bob{50%{transform:translateY(-8px)}}
+
+/* formats strip */
+.strip{border-block:1px solid var(--ink-3)}
+.strip .wrap{display:flex;gap:10px 28px;flex-wrap:wrap;justify-content:center;padding-block:20px;font:500 13px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.strip span{display:flex;align-items:center;gap:8px}
+.strip b{width:7px;height:7px;border-radius:50%;display:inline-block}
+
+/* sections */
+section.band{padding-block:88px}
+.sh{display:flex;flex-direction:column;gap:12px;max-width:640px;margin-bottom:40px}
+.sh h2{font-size:clamp(34px,4.6vw,56px);line-height:.98;font-weight:800}
+.sh p{margin:0;color:var(--muted);font-size:18px}
+
+/* how it works: a real sequence */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:st}
+.step{padding:24px;border-radius:24px;background:var(--ink-2);border:1px solid var(--line);display:flex;flex-direction:column;gap:14px;min-width:0}
+.step .n{font:800 15px var(--display);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--fg);color:var(--ink)}
+.step h3{font-size:22px}
+.step p{margin:0;color:var(--muted);font-size:15px}
+.demo{margin-top:auto;border-radius:16px;background:var(--ink);border:1px solid var(--ink-3);padding:14px;font-size:14px}
+.demo.type{font:500 15px/1.45 var(--body);color:var(--fg)}
+.demo.type::after{content:"";display:inline-block;width:2px;height:1.05em;background:var(--mint);vertical-align:-2px;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{padding:6px 11px;border-radius:999px;border:1px solid var(--line);font-size:13px;color:var(--muted)}
+.chips span.on{background:var(--fg);color:var(--ink);border-color:var(--fg);font-weight:600}
+.lyr{font:700 17px/1.35 var(--display)}
+.lyr span{display:block;color:var(--dim)}
+
+/* feature grid */
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ink-3);border:1px solid var(--ink-3);border-radius:24px;overflow:hidden}
+.feat{background:var(--ink);padding:26px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.feat .ic{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:var(--ink-3);border:1px solid var(--line)}
+.feat .ic svg{width:20px;height:20px}
+.feat h3{font-size:20px}
+.feat p{margin:0;color:var(--muted);font-size:15px}
+.feat .tag{font:500 11px var(--mono);color:var(--mint);letter-spacing:.08em;text-transform:uppercase}
+
+/* gift spotlight */
+.gift{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.gcard{position:relative;border-radius:30px;padding:28px;min-height:380px;display:flex;flex-direction:column;gap:14px;background:linear-gradient(150deg,var(--rose),var(--amber));color:#fff;overflow:hidden;max-width:420px}
+.gcard::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 50% at 85% 0%,rgba(255,255,255,.3),transparent 60%);pointer-events:none}
+.gtag{align-self:flex-start;font:600 11px var(--mono);letter-spacing:.08em;padding:6px 11px;border-radius:999px;background:rgba(7,5,11,.55)}
+.gsched{align-self:flex-start;font:600 12px var(--body);padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.9);color:#2a0a1a}
+.gfor{font:800 64px/.95 var(--display);letter-spacing:-.04em}
+.gplay{width:58px;height:58px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.gly{font:700 18px/1.35 var(--display)}
+.gly span{display:block;opacity:.65}
+.gfrom{margin-top:auto;font:500 11px var(--mono);opacity:.85}
+.checks{list-style:none;padding:0;margin:22px 0 28px;display:flex;flex-direction:column;gap:12px}
+.checks li{display:flex;gap:12px;align-items:flex-start;font-size:16px}
+.checks li::before{content:"";width:22px;height:22px;flex:none;border-radius:50%;margin-top:1px;background:var(--mint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.2 2.2 4.8-4.8' stroke='%2306281c' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/100%}
+.checks b{display:block}
+.checks span{color:var(--muted);font-size:15px}
+
+/* earn */
+.earn{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.money{padding:24px;border-radius:24px;border:1px solid var(--line);background:var(--ink-2);display:flex;flex-direction:column;gap:8px;min-width:0}
+.money b{font:800 44px/1 var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.money b.g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.money span{font-weight:600}
+.money small{color:var(--muted);font-size:14px}
+
+/* waitlist */
+.join{border-radius:32px;padding:56px 48px;background:linear-gradient(var(--ink-2),var(--ink-2)) padding-box,var(--grad) border-box;border:1.5px solid transparent;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.join h2{font-size:clamp(34px,4.4vw,54px);line-height:.98}
+.join p{color:var(--muted);margin:14px 0 0}
+form{display:flex;flex-direction:column;gap:10px}
+.field{display:flex;gap:10px;flex-wrap:wrap}
+.field input{flex:1 1 220px;min-width:0;height:54px;border-radius:16px;border:1px solid var(--line);background:var(--ink);color:var(--fg);padding:0 16px;font:16px var(--body)}
+.field input:focus{outline:none;border-color:var(--violet)}
+.msg{min-height:22px;font-size:14px;color:var(--muted)}
+.msg.ok{color:var(--mint)}.msg.err{color:#ff7a95}
+
+footer{border-top:1px solid var(--ink-3);padding-block:32px calc(32px + env(safe-area-inset-bottom,0px));color:var(--dim);font-size:14px}
+footer .wrap{display:flex;gap:16px 28px;flex-wrap:wrap;align-items:center}
+footer .sp{flex:1}
+footer a{text-decoration:none;color:var(--muted)}
+footer a:hover{color:var(--fg)}
+
+dialog{border:1px solid var(--line);background:var(--ink-2);color:var(--fg);border-radius:24px;padding:24px;max-width:min(420px,calc(100vw - 32px))}
+dialog::backdrop{background:rgba(0,0,0,.65)}
+dialog h3{font-size:22px;margin-bottom:12px}
+dialog ol{margin:0 0 18px;padding-left:20px;display:flex;flex-direction:column;gap:8px;color:var(--muted)}
+dialog ol b{color:var(--fg)}
+
+@media (max-width:920px){
+  .hd nav{display:none}.hd .btn{margin-left:auto}
+  .hero{grid-template-columns:1fr;padding-block:40px 40px;gap:36px}
+  .stage{min-height:0;padding-block:20px 40px}
+  .steps,.feats{grid-template-columns:1fr}
+  .gift{grid-template-columns:1fr;gap:36px}
+  .earn{grid-template-columns:1fr 1fr}
+  .join{grid-template-columns:1fr;padding:32px 22px}
+  section.band{padding-block:64px}
+}
+@media (max-width:460px){.earn{grid-template-columns:1fr}.f1{left:-4px}.f2{right:-4px}.float{font-size:12px}.hero .ctas .btn{width:100%}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+.rlogo{position:relative;display:inline-block;aspect-ratio:95/128;flex:none;line-height:0;width:22px}
+.rlogo>img{width:100%;height:100%;display:block}
+.rlogo.sm{width:18px}
+.rlogo .knob{position:absolute;left:.8%;top:1.4%;width:37.9%;aspect-ratio:1;border-radius:50%;background:url(assets/knob.png) center/100% no-repeat;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45));animation:rknob 4.2s cubic-bezier(.7,0,.3,1) infinite}
+@keyframes rknob{0%,32%{transform:translateY(0)}50%,82%{transform:translateY(247%)}100%{transform:translateY(0)}}
+.tagline{font:500 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;background:linear-gradient(90deg,var(--violet),var(--mint),var(--azure));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tagline.big{font-size:14px;letter-spacing:.2em}
+
+/* glass mirror, matching the app */
+:root{--ink:#000;--muted:#bab2cb;--dim:#a29ab8;
+  --mir-top:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,0) 42%);
+  --mir-glare:linear-gradient(115deg,transparent 28%,rgba(255,255,255,.035) 44%,transparent 58%);
+  --mir-body:linear-gradient(180deg,#110c18,#040306);--mir-edge:rgba(255,255,255,.085);
+  --mir-hi:inset 0 1px 0 rgba(255,255,255,.13),inset 0 -1px 0 rgba(0,0,0,.6);
+  --chrome:linear-gradient(180deg,#ffffff 0%,#ececf2 46%,#cfcfd8 52%,#f4f4f8 100%)}
+body{background:radial-gradient(60% 40% at 95% -5%,rgba(164,71,255,.28),rgba(109,23,201,.08) 45%,transparent 70%) no-repeat,#000}
+body::before{background:#000}
+.step,.money,.btn-ghost,.field input,.chips span:not(.on){background:var(--mir-top),var(--mir-glare),var(--mir-body)!important;border:1px solid var(--mir-edge)!important;box-shadow:var(--mir-hi),0 18px 40px -22px #000}
+.demo{background:linear-gradient(180deg,rgba(255,255,255,.04),transparent),#020103!important;border:1px solid var(--mir-edge)!important;box-shadow:inset 0 2px 8px rgba(0,0,0,.6)}
+.feats{background:rgba(255,255,255,.07)!important;border-color:var(--mir-edge)!important}
+.feat{background:var(--mir-top),var(--mir-glare),var(--mir-body)!important}
+.feat .ic{background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,0) 55%),linear-gradient(135deg,rgba(164,71,255,.55),rgba(91,31,214,.4))!important;border:1px solid rgba(255,255,255,.14)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.step:first-child,.money:first-child{background:radial-gradient(120% 90% at 100% 0%,rgba(164,71,255,.24),transparent 62%),var(--mir-top),var(--mir-body)!important}
+.float{background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.01)),rgba(6,4,9,.6)!important;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.12)!important;box-shadow:var(--mir-hi),0 18px 40px -16px #000}
+.join{background:radial-gradient(80% 90% at 100% 0%,rgba(164,71,255,.22),transparent 60%) padding-box,var(--mir-body) padding-box,var(--grad) border-box!important;box-shadow:var(--mir-hi),0 30px 60px -30px rgba(164,71,255,.5)}
+.chips span.on{background:var(--chrome)!important;border-color:transparent!important}
+.btn-light{position:relative;overflow:hidden;isolation:isolate;background:var(--chrome)!important;box-shadow:inset 0 1px 0 #fff,inset 0 -1px 0 rgba(0,0,0,.25),0 16px 36px -10px rgba(164,71,255,.6)!important}
+.btn-light::after{content:"";position:absolute;top:-20%;bottom:-20%;width:34%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-18deg);animation:glassShine 5.2s ease-in-out infinite;pointer-events:none}
+@keyframes glassShine{0%,64%{left:-60%}84%,100%{left:130%}}
+.strip{border-color:rgba(255,255,255,.07)!important;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent)}
+.hero .rlogo>img,.logo .rlogo>img{-webkit-box-reflect:below 1px linear-gradient(transparent 55%,rgba(255,255,255,.22))}
+.gcard{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 30px 60px -30px rgba(255,63,164,.45)}
+@media (prefers-reduced-motion:reduce){.btn-light::after{animation:none;display:none}}
+
+/* hero flip demo */
+.lflip{position:relative;width:min(300px,72vw);aspect-ratio:9/16;max-width:100%;border-radius:28px;overflow:hidden;background:#000;border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 40px 80px -30px rgba(164,71,255,.55),0 30px 60px -30px #000;transform-origin:50% 50%}
+.lf-face{position:absolute;inset:0}
+.lf-face img,.lf-face video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lf-front img{object-position:50% 30%}
+.lf-pill{position:absolute;left:12px;top:12px;font:500 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:6px 9px;border-radius:999px;background:rgba(0,0,0,.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.16)}
+.lf-pill.ai{background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,0)),linear-gradient(135deg,rgba(164,71,255,.9),rgba(91,31,214,.9))}
+.lf-cap{position:absolute;left:12px;right:12px;bottom:12px;padding:10px 12px;border-radius:14px;font-size:13.5px;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.02)),rgba(0,0,0,.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.14)}
+.lf-snd{position:absolute;right:12px;bottom:12px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.18);font-size:15px}
+.lf-tog{position:absolute;right:12px;top:12px;z-index:3;touch-action:none;cursor:grab;padding:0}
+.lf-tog,.lf-tog *{-webkit-user-select:none;user-select:none}
+.lf-track{display:block;position:relative;width:30px;height:78px;border-radius:15px;background:linear-gradient(180deg,#c24dff,#6d17c9);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -2px 5px rgba(0,0,0,.45),0 8px 18px -6px rgba(0,0,0,.8)}
+.lf-track i{position:absolute;left:3px;top:3px;width:24px;height:24px;border-radius:50%;background:url(assets/knob-lg.png) center/100%;box-shadow:0 3px 8px rgba(0,0,0,.6);transition:transform .45s cubic-bezier(.3,1.4,.5,1)}
+.lflip.on .lf-track i{transform:translateY(48px)}
+.lflip:not(.touched) .lf-track i{animation:lfnudge 2s ease-in-out infinite}
+@keyframes lfnudge{0%,55%,100%{transform:translateY(0)}72%{transform:translateY(18px)}}
+.lf-tog.drag .lf-track i{animation:none!important;transition:none}
+.lf-hint{position:absolute;right:50px;top:30px;z-index:3;font:600 12px var(--body);padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18)}
+.lflip.touched .lf-hint{display:none}
+.demo.lph{height:120px;position:relative;padding:0;border:1px solid var(--mir-edge)!important}
+.demo.lph{overflow:hidden}
+.demo.lph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.demo.lph span{position:absolute;left:8px;top:8px;font:500 9.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:4px 7px;border-radius:999px;background:rgba(0,0,0,.5)}
+@media (prefers-reduced-motion:reduce){.lflip:not(.touched) .lf-track i{animation:none}}
+</style>
+</head>
+<body>
+
+
+<header><div class="wrap hd">
+  <a class="logo" href="#top"><span class="rlogo " aria-hidden="true"><img src="assets/logo-track-sm.png" alt=""><i class="knob"></i></span>Reflections</a>
+  <nav aria-label="Sections"><a href="#how">How it works</a><a href="#become">Reflections</a><a href="#earn">Earn</a><a href="#join">Early access</a></nav>
+  <a class="btn btn-ghost" href="app.html">Open the app</a>
+</div></header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <div class="tagline big">Toggle your reality</div>
+      <h1 style="margin-top:18px">Make the song. Flip the moment. <span class="grad">Get paid when it spreads.</span></h1>
+      <p class="lede">Post a real moment and say what happened. Reflections turns it into a song, a film or both. Friends slide the toggle to see it, make their own version and share it. You get credit and a cut, automatically.</p>
+      <div class="ctas"><a class="btn btn-light" href="app.html#flip">Make your first song <small>free</small></a><a class="btn btn-ghost" href="#join">Get early access</a></div>
+      <div class="fine">No account needed to try it.</div>
+    </div>
+    <div class="stage" aria-label="Try a flip">
+      <div class="lflip" id="lflip">
+        <div class="lf-face lf-front"><img src="assets/deal.jpg" alt="A man on a phone call by a pool, looking worried"><span class="lf-pill">Reality</span><div class="lf-cap"><b>@dealmaker</b> when the deal goes bad</div></div>
+        <div class="lf-face lf-back" hidden><video id="lfVid" playsinline preload="none" poster="assets/deal2-poster.jpg"><source src="assets/deal2.mp4" type="video/mp4"><source src="assets/deal2.webm" type="video/webm"></video><span class="lf-pill ai">Reflection</span><button class="lf-snd" id="lfSnd" type="button" aria-label="Sound on or off">🔊</button></div>
+        <button class="lf-tog" id="lfTog" aria-label="Slide the toggle to flip between reality and reflection"><span class="lf-track"><i></i></span></button>
+        <div class="lf-hint" id="lfHint">Slide it down ↓</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip"><div class="wrap">
+    <span><b style="background:var(--violet)"></b>Real clips</span><span><b style="background:var(--azure)"></b>Films up to 1:30</span><span><b style="background:var(--mint)"></b>Songs</span><span><b style="background:var(--violet)"></b>Song + Film</span><span><b style="background:var(--azure)"></b>AI characters</span><span><b style="background:var(--rose)"></b>Remixes</span><span><b style="background:var(--mint)"></b>Proof of creation</span>
+  </div></div>
+
+  <section class="band" id="how"><div class="wrap">
+    <div class="sh"><div class="eyebrow">How it works</div><h2>One photo. One prompt. One flip.</h2><p>You don't need to edit, sing or act. You need something that happened to you.</p></div>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><h3>Post your reality</h3><p>A photo or video, the moment exactly as it happened.</p><div class="demo lph"><img src="assets/deal.jpg" alt=""><span>Reality</span></div></div>
+      <div class="step"><span class="n">2</span><h3>Prompt it</h3><p>Say what it should become, and pick a film, a song, both, or your AI character. Or let Auto decide.</p><div class="demo type">make it a funny story, something that never happened</div><div class="demo chips" style="margin-top:8px"><span class="on">✦ Auto</span><span>Song</span><span>Film</span><span>Song + Film</span><span>Character</span></div></div>
+      <div class="step"><span class="n">3</span><h3>Slide, remix, get paid</h3><p>Everyone slides the toggle to see what never happened. When they make their own version, you get credit and a cut.</p><div class="demo lyr"><span>then a dolphin called with a better offer</span>now you own the pool. and the dolphin.</div></div>
+    </div>
+  </div></section>
+
+  <section class="band" id="become" style="padding-top:0"><div class="wrap">
+    <div class="sh"><div class="eyebrow">The other side</div><h2>What your reflection can be.</h2></div>
+    <div class="feats">
+      <div class="feat"><span class="ic" style="font-size:20px">🎬</span><span class="tag">Film</span><h3>The story that never happened</h3><p>A short film made from your photo, from 5 seconds up to a minute and a half. Comedy, action trailer, anime, telenovela.</p></div>
+      <div class="feat"><span class="ic" style="font-size:20px">🎵</span><span class="tag">Song</span><h3>Your moment, sung</h3><p>Lyrics written about your photo and sung in the sound you pick: pop, hip-hop, country, lo-fi and more.</p></div>
+      <div class="feat"><span class="ic" style="font-size:20px">🎞️</span><span class="tag">Song + Film</span><h3>A music video of your life</h3><p>The film and the song together, with the lyrics on screen. Up to 1:30.</p></div>
+      <div class="feat"><span class="ic" style="font-size:20px">✦</span><span class="tag">AI character</span><h3>You, redrawn</h3><p>Cyber, neon, toon, comic or pixel. The same you, from the same photo.</p></div>
+      <div class="feat"><span class="ic" style="font-size:20px">📹</span><span class="tag">Real clip</span><h3>What really happened</h3><p>Post the calm photo on the front and the real chaos on the back.</p></div>
+      <div class="feat"><span class="ic" style="font-size:20px">🔁</span><span class="tag">Social</span><h3>Remix, duet, share anywhere</h3><p>Friends remix your flips and add their verse. Export any flip to Instagram, TikTok or a text with your @ on it.</p></div>
+    </div>
+  </div></section>
+
+  <section class="band" id="earn"><div class="wrap">
+    <div class="sh"><div class="eyebrow">Credit and earnings</div><h2>Get paid when it spreads.</h2><p>Every creation is permanently recorded with your name on it, and every remix pays the original. No crypto, no wallet to manage. Just dollars.</p></div>
+    <div class="earn">
+      <div class="money"><b class="g">Proof</b><span>of creation</span><small>A permanent, public record that you made it first, with every version made from it.</small></div>
+      <div class="money"><b>20%</b><span>Your cut from remixes</span><small>When someone makes their own version, 20% of what it earns comes back to you.</small></div>
+      <div class="money"><b>Plays</b><span>Plus tips, from every song</span><small>See exactly where each dollar came from.</small></div>
+      <div class="money"><b>$</b><span>Cash out to your bank</span><small>Monthly, from $10. Under 18? Your earnings wait for you.</small></div>
+    </div>
+  </div></section>
+
+  <section class="band" id="join" style="padding-top:0"><div class="wrap">
+    <div class="join">
+      <div><div class="eyebrow">Early access</div><h2 style="margin-top:12px">Be first to make it.</h2><p id="wlLede">Join the list and we'll email you when your invite is ready. You can try the app now without signing up.</p></div>
+      <form id="wl" novalidate>
+        <label class="eyebrow" for="wlEmail">Your email</label>
+        <div class="field"><input id="wlEmail" type="email" autocomplete="email" placeholder="you@email.com" required><button class="btn btn-light" type="submit" id="wlBtn">Join the list</button></div>
+        <div class="msg" id="wlMsg" role="status" aria-live="polite"></div>
+        <button class="btn btn-ghost" type="button" id="getApp" style="align-self:flex-start;height:46px">Add the app to your home screen</button>
+      </form>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="wrap">
+  <a class="logo" href="#top" style="font-size:17px"><span class="rlogo sm" aria-hidden="true"><img src="assets/logo-track-sm.png" alt=""><i class="knob"></i></span>Reflections</a><span class="tagline">Toggle your reality</span>
+  <span class="sp"></span>
+  <a href="app.html">Open the app</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a>
+  <span>© 2026 Reflections</span>
+</div></footer>
+
+<dialog id="instDlg" aria-labelledby="instH">
+  <h3 id="instH">Add Reflections to your home screen</h3>
+  <ol id="instSteps"></ol>
+  <button class="btn btn-light" id="instClose" style="width:100%">Got it</button>
+</dialog>
+
+<script src="config.js"></script>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const CFG=Object.assign({supabaseUrl:'',supabaseKey:'',supabaseAnonKey:''},window.REFLECTIONS_CONFIG||{});const KEY=CFG.supabaseKey||CFG.supabaseAnonKey,LIVE=!!(CFG.supabaseUrl&&KEY);
+  // Until the database is connected, don't pretend to collect emails.
+  if(!LIVE){$('wlLede').textContent="Early-access sign-up opens soon. You can try the app now, free, without an account.";$('wlEmail').closest('.field').innerHTML='<a class="btn btn-light" href="app.html#try">Try the app free</a>';document.querySelector('label[for=wlEmail]').hidden=true}
+  // waitlist
+  $('wl').addEventListener('submit',async e=>{e.preventDefault();const em=$('wlEmail').value.trim(),msg=$('wlMsg');
+    if(!/^\S+@\S+\.\S+$/.test(em)){msg.className='msg err';msg.textContent='Enter a valid email, like you@email.com.';return}
+    $('wlBtn').disabled=true;msg.className='msg';msg.textContent='Adding you…';
+    try{
+      if(!LIVE)return;
+      const r=await fetch(CFG.supabaseUrl+'/rest/v1/waitlist',{method:'POST',headers:{apikey:KEY,'Content-Type':'application/json',Prefer:'return=minimal'},body:JSON.stringify({email:em})});
+      if(!r.ok&&r.status!==409)throw new Error(r.status);
+      msg.className='msg ok';msg.textContent="You're on the list. We'll email "+em+" when your invite is ready.";$('wlEmail').value='';
+    }catch(err){msg.className='msg err';msg.textContent="We couldn't add you right now. Try again in a minute."}
+    finally{$('wlBtn').disabled=false}});
+  // install
+  let dp=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e});
+  const ios=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  $('getApp').onclick=()=>{if(dp){dp.prompt();dp=null;return}
+    $('instSteps').innerHTML=ios?'<li>In Safari, tap the <b>Share</b> button</li><li>Tap <b>Add to Home Screen</b></li><li>Tap <b>Add</b></li>':'<li>Open the browser menu (⋮) or the install icon in the address bar</li><li>Tap <b>Install app</b> or <b>Add to Home screen</b></li><li>Open Reflections from your home screen</li>';
+    const d=$('instDlg');if(d.showModal)d.showModal();else d.setAttribute('open','')};
+  $('instClose').onclick=()=>{const d=$('instDlg');d.close?d.close():d.removeAttribute('open')};
+  const v=document.querySelector('.mirror video');if(v){const p=v.play();if(p&&p.catch)p.catch(()=>{})}
+  if(document.querySelector('link[rel=manifest]')&&'serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+})();
+</script>
+
+<script>
+(()=>{const box=document.getElementById('lflip');if(!box)return;const tog=document.getElementById('lfTog'),k=tog.querySelector('i'),v=document.getElementById('lfVid'),front=box.querySelector('.lf-front'),back=box.querySelector('.lf-back'),snd=document.getElementById('lfSnd');
+  let on=false,drag=null;const T=48,RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function set(next){if(next===on)return;on=next;box.classList.add('touched');
+    const swap=()=>{box.classList.toggle('on',on);front.hidden=on;back.hidden=!on;if(on){v.currentTime=0;v.muted=false;v.play().catch(()=>{v.muted=true;snd.textContent='🔇';v.play().catch(()=>{})})}else v.pause()};
+    if(RM||!box.animate){swap();return}
+    box.animate([{transform:'perspective(1000px) rotateX(0)'},{transform:'perspective(1000px) rotateX(88deg)'}],{duration:240,easing:'ease-in'}).onfinish=()=>{swap();box.animate([{transform:'perspective(1000px) rotateX(-88deg)'},{transform:'perspective(1000px) rotateX(0)'}],{duration:360,easing:'cubic-bezier(.2,.7,.3,1.15)'})}}
+  tog.addEventListener('pointerdown',e=>{e.preventDefault();drag={y:e.clientY,m:0,s:on?T:0};try{tog.setPointerCapture(e.pointerId)}catch(_){}tog.classList.add('drag');box.classList.add('touched')});
+  tog.addEventListener('pointermove',e=>{if(!drag)return;const dy=e.clientY-drag.y;drag.m=Math.max(drag.m,Math.abs(dy));k.style.transform=`translateY(${Math.max(0,Math.min(T,drag.s+dy))}px)`});
+  const end=()=>{if(!drag)return;const d=drag;drag=null;tog.classList.remove('drag');const m=/translateY\(([-\d.]+)px\)/.exec(k.style.transform);k.style.transform='';
+    if(d.m<6){const H=document.getElementById('lfHint');if(H){H.style.display='block';H.textContent=on?'Slide it up ↑':'Slide it down ↓'}k.animate([{transform:`translateY(${on?T:0}px)`},{transform:`translateY(${on?T-22:22}px)`},{transform:`translateY(${on?T:0}px)`}],{duration:600,easing:'cubic-bezier(.3,1.4,.5,1)'});return}set((m?+m[1]:d.s)>T/2)};
+  tog.addEventListener('pointerup',end);tog.addEventListener('pointercancel',end);
+  tog.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){e.preventDefault();set(true)}if(e.key==='ArrowUp'){e.preventDefault();set(false)}});
+  snd.onclick=()=>{v.muted=!v.muted;snd.textContent=v.muted?'🔇':'🔊'};
+  v.onended=()=>set(false);
+  let fell=false;const fb=async()=>{if(fell||v.readyState>=3)return;fell=true;const mp4ok=!!v.canPlayType('video/mp4; codecs="avc1.4D401E, mp4a.40.2"');for(const u of (mp4ok?['assets/deal2.mp4']:[]).concat(['assets/deal2.webm'])){try{const r=await fetch(u);if(!r.ok)continue;v.src=URL.createObjectURL(await r.blob());v.load();if(on)v.play().catch(()=>{v.muted=true;v.play().catch(()=>{})});return}catch(e){}}};
+  v.addEventListener('playing',()=>{},{once:true});[...v.querySelectorAll('source')].pop().addEventListener('error',fb);
+  tog.addEventListener('pointerup',()=>setTimeout(()=>{if(on)fb()},5000));
+})();
+</script>
+
+</body>
+</html>
